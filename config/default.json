@@ -1,4 +1,0 @@
-{
-    "mongoURI": "mongodb+srv://oroth8:NTlax27!@cluster0.0rw7d.mongodb.net/contact_tracker?retryWrites=true&w=majority",
-    "jwtSecret": "NTlax27!"
-}
