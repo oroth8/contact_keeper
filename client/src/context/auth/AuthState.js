@@ -11,6 +11,7 @@ AUTH_ERROR,
 LOGIN_SUCCESS,
 LOGOUT,
 CLEAR_ERRORS,
+LOGIN_FAIL
 } from '../types'
 
 const AuthState = props => {
@@ -65,10 +66,32 @@ const AuthState = props => {
       };
 
     // login user
-    const loginUser = () => console.log('load user');
+    const loginUser = async formData => {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      };
+  
+      try {
+        const res = await axios.post('/api/auth', formData, config);
+  
+        dispatch({
+          type: LOGIN_SUCCESS,
+          payload: res.data
+        });
+  
+        loadUser();
+      } catch (err) {
+        dispatch({
+          type: LOGIN_FAIL,
+          payload: err.response.data.msg
+        });
+      }
+    };
 
     // logout
-    const logoutUser = () => console.log('load user');
+    const logout = () => dispatch({type: LOGOUT});
 
     // clear errors
     const clearErrors = () => dispatch({type: CLEAR_ERRORS})
@@ -83,7 +106,7 @@ const AuthState = props => {
             register,
             loadUser,
             loginUser,
-            logoutUser,
+            logout,
             clearErrors
             }}>
             {props.children}
