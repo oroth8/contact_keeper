@@ -105,6 +105,7 @@ dist
 
 #json
 default.json
+production.json
 /client/build
 .DS_Store
 /client/.env.local
