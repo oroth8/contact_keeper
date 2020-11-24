@@ -1,7 +1,7 @@
 # Contact Keeper
 Contact Keeper is a MERN Stack Application Designed to Store Contacts in a Safe and Secure Manner.
 
-![Screenshot](client\public\CKscreenshot.png)
+![Screenshot](./client/public/CKscreenshot.png)
 
 ##Deployed Link
 
