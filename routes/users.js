@@ -7,6 +7,14 @@ const {check, validationResult} = require('express-validator');
 
 const User = require('../models/Users');
 
+let jwtENV;
+
+if(process.env.NODE_ENV !== 'production'){
+    jwtENV = config.get('jwtSecret');
+}else{
+    jwtENV = process.env.JWT_SECRET;
+}
+
 // @route     POST api/users
 // @desc      Regiter a user
 // @access    Public
@@ -57,7 +65,7 @@ router.post(
 
       jwt.sign(
         payload,
-        config.get('jwtSecret'),
+        jwtENV,
         {
           expiresIn: 360000,
         },

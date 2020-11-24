@@ -1,7 +1,14 @@
 const mongoose = require('mongoose');
 const config = require('config');
 // const db = process.env.mongoURI;
-const db = config.get('mongoURI');
+let db;
+
+if(process.env.NODE_ENV !== 'production'){
+     db = config.get('mongoURI');
+}else{
+     db = process.env.MONGO_URI;
+}
+
 
 const connectDB = async () => {
     try {
