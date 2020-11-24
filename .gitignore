@@ -104,6 +104,7 @@ dist
 .tern-port
 
 #json
+production.json
 default.json
 /client/build
 .DS_Store
